@@ -73,3 +73,33 @@ modal.style.display="none";
 }
 
 };
+// Testimonial Slider
+
+const testimonials = document.querySelectorAll(".testimonial");
+
+let current = 0;
+
+setInterval(() => {
+
+testimonials[current].classList.remove("active");
+
+current = (current + 1) % testimonials.length;
+
+testimonials[current].classList.add("active");
+
+}, 4000);
+
+// FAQ
+
+document.querySelectorAll(".faq-question").forEach(question=>{
+
+question.onclick=()=>{
+
+const answer=question.nextElementSibling;
+
+answer.style.display=
+answer.style.display==="block"?"none":"block";
+
+};
+
+});
