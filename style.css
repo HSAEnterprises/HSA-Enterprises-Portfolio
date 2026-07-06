@@ -11,7 +11,6 @@ background:#0b0b0b;
 color:#fff;
 line-height:1.6;
 }
-
 header{
 position:fixed;
 top:0;
@@ -20,11 +19,12 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 8%;
-background:rgba(0,0,0,.95);
-border-bottom:1px solid rgba(212,175,55,.2);
 z-index:1000;
-}
 
+background:rgba(10,10,10,0.6);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(212,175,55,0.15);
+}
 .logo{
 display:flex;
 align-items:center;
@@ -732,4 +732,61 @@ transition:0.3s;
 .btn:hover{
 transform:scale(1.05);
 box-shadow:0 10px 25px rgba(212,175,55,0.4);
+}
+nav a{
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#d4af37;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+.menu-toggle{
+display:none;
+font-size:26px;
+cursor:pointer;
+color:#d4af37;
+}
+
+@media(max-width:900px){
+
+nav{
+position:fixed;
+top:0;
+right:-100%;
+width:70%;
+height:100vh;
+background:#0b0b0b;
+flex-direction:column;
+padding:80px 30px;
+transition:0.4s;
+}
+
+nav.show-menu{
+right:0;
+}
+
+.menu-toggle{
+display:block;
+}
+}
+  .hidden{
+opacity:0;
+transform:translateY(40px);
+transition:0.6s ease;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
 }
