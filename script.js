@@ -104,38 +104,40 @@ answer.style.display==="block"?"none":"block";
 
 });
 // ===========================
-// EMAILJS CONTACT FORM
-// ===========================
+/// EMAILJS CONTACT FORM (FIXED SAFE VERSION)
 
 emailjs.init("sjuwfOnyjgPpyBULR");
 
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 
-contactForm.addEventListener("submit", function (e) {
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
+    e.stopPropagation(); // 🔥 IMPORTANT FIX
 
     formStatus.innerHTML = "Sending...";
     formStatus.style.color = "#d4af37";
 
     emailjs.sendForm(
-        "service_28u5z9c",
-        "template_yyexrrh",
-        this
+      "service_28u5z9c",
+      "template_yyexrrh",
+      this
     ).then(() => {
 
-        formStatus.innerHTML = "✅ Message sent successfully!";
-        formStatus.style.color = "#4CAF50";
+      formStatus.innerHTML = "✅ Message sent successfully!";
+      formStatus.style.color = "#4CAF50";
 
-        contactForm.reset();
+      contactForm.reset();
 
     }).catch((error) => {
 
-        console.error(error);
+      console.error(error);
 
-        formStatus.innerHTML = "❌ Failed to send message. Please try again.";
-        formStatus.style.color = "#ff4d4d";
+      formStatus.innerHTML = "❌ Failed to send message.";
+      formStatus.style.color = "#ff4d4d";
 
     });
 
-});
+  });
+}
