@@ -103,3 +103,39 @@ answer.style.display==="block"?"none":"block";
 };
 
 });
+// ===========================
+// EMAILJS CONTACT FORM
+// ===========================
+
+emailjs.init("sjuwfOnyjgPpyBULR");
+
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
+
+contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    formStatus.innerHTML = "Sending...";
+    formStatus.style.color = "#d4af37";
+
+    emailjs.sendForm(
+        "service_28u5z9c",
+        "template_yyexrrh",
+        this
+    ).then(() => {
+
+        formStatus.innerHTML = "✅ Message sent successfully!";
+        formStatus.style.color = "#4CAF50";
+
+        contactForm.reset();
+
+    }).catch((error) => {
+
+        console.error(error);
+
+        formStatus.innerHTML = "❌ Failed to send message. Please try again.";
+        formStatus.style.color = "#ff4d4d";
+
+    });
+
+});
