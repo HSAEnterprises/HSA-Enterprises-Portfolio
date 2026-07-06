@@ -790,3 +790,23 @@ transition:0.6s ease;
 opacity:1;
 transform:translateY(0);
 }
+.trust-bar{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+padding:30px 8%;
+background:#111;
+text-align:center;
+border-top:1px solid rgba(212,175,55,.15);
+border-bottom:1px solid rgba(212,175,55,.15);
+}
+
+.trust-bar div{
+font-weight:600;
+}
+
+@media(max-width:768px){
+.trust-bar{
+grid-template-columns:repeat(2,1fr);
+}
+}
