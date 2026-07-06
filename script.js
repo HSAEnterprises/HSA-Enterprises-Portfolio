@@ -28,3 +28,13 @@ window.addEventListener("scroll",()=>{
     header.style.boxShadow="none";
   }
 });
+// Mobile Menu
+
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click",()=>{
+
+nav.classList.toggle("show-menu");
+
+});
