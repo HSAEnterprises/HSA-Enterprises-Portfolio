@@ -422,21 +422,35 @@ Yes. I provide post-delivery support to ensure everything works smoothly.
 </div>
 
 </section>
-    <section id="contact">
+<section id="contact">
 
 <h2>Let's Build Your Shopify Store</h2>
 
-<form class="contact-form">
+<form id="contact-form" class="contact-form">
 
-<input type="text" placeholder="Your Name" required>
+<input
+type="text"
+name="from_name"
+placeholder="Your Name"
+required>
 
-<input type="email" placeholder="Email Address" required>
+<input
+type="email"
+name="reply_to"
+placeholder="Email Address"
+required>
 
-<input type="text" placeholder="Business Name">
+<input
+type="text"
+name="business"
+placeholder="Business Name">
 
-<textarea placeholder="Tell me about your project"></textarea>
+<textarea
+name="message"
+placeholder="Tell me about your project"
+required></textarea>
 
-<button class="btn">
+<button class="btn" type="submit">
 
 Send Inquiry
 
@@ -444,8 +458,11 @@ Send Inquiry
 
 </form>
 
+<p id="form-status"></p>
+
 </section>
-<footer>
+    
+    <footer>
 
 <div class="footer-logo">
 
@@ -480,8 +497,10 @@ Professional Shopify Store Development for businesses worldwide.
 </p>
 
 </footer>
+    <div class="project-modal">
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script src="script.js"></script>
-<div class="project-modal">
 
 <div class="modal-box">
 
