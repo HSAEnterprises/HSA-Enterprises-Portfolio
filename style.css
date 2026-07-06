@@ -514,7 +514,98 @@ top:15px;
 font-size:35px;
 
 cursor:pointer;
+/* ===== Testimonials ===== */
 
+/* ===== Testimonials ===== */
+
+.testimonial-slider{
+max-width:800px;
+margin:auto;
+text-align:center;
+}
+
+.testimonial{
+display:none;
+padding:30px;
+background:#161616;
+border-radius:20px;
+border:1px solid rgba(212,175,55,.2);
+}
+
+.testimonial.active{
+display:block;
+}
+
+.stars{
+font-size:22px;
+color:#d4af37;
+margin-bottom:15px;
+}
+
+/* FAQ */
+
+.faq-item{
+max-width:800px;
+margin:20px auto;
+border:1px solid rgba(212,175,55,.2);
+border-radius:12px;
+overflow:hidden;
+}
+
+.faq-question{
+width:100%;
+padding:20px;
+background:#161616;
 color:#fff;
+border:none;
+cursor:pointer;
+font-size:18px;
+text-align:left;
+}
 
+.faq-answer{
+display:none;
+padding:20px;
+background:#111;
+}
+
+/* Contact */
+
+.contact-form{
+max-width:700px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+padding:15px;
+background:#161616;
+border:1px solid rgba(212,175,55,.2);
+color:#fff;
+border-radius:10px;
+}
+
+.contact-form textarea{
+min-height:160px;
+resize:vertical;
+}
+
+/* Footer */
+
+.footer-social{
+margin:25px 0;
+}
+
+.footer-social a{
+color:#d4af37;
+font-size:24px;
+margin:0 12px;
+transition:.3s;
+}
+
+.footer-social a:hover{
+transform:translateY(-5px);
 }
