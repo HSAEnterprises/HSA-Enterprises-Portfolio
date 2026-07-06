@@ -810,3 +810,48 @@ font-weight:600;
 grid-template-columns:repeat(2,1fr);
 }
 }
+.stats
+  .stat-card
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-top:40px;
+}
+
+.stat-card{
+    background:#141414;
+    border:1px solid rgba(212,175,55,.15);
+    border-radius:16px;
+    padding:30px 20px;
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.stat-card h2{
+    color:#d4af37;
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.stat-card p{
+    color:#ccc;
+    margin:0;
+}
+
+@media(max-width:900px){
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .stats{
+        grid-template-columns:1fr;
+    }
+}
+  
