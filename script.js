@@ -1,110 +1,165 @@
-// Smooth animation on scroll
+// ==============================
+// HSA Enterprises Portfolio
+// script.js
+// ==============================
+
+// ==============================
+// SCROLL ANIMATION
+// ==============================
 
 const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
       entry.target.classList.add("show");
     }
   });
 }, {
-  threshold:0.2
+  threshold: 0.2
 });
 
-sections.forEach(section=>{
+sections.forEach((section) => {
   section.classList.add("hidden");
   observer.observe(section);
 });
 
-// Header shadow on scroll
 
-window.addEventListener("scroll",()=>{
-  const header=document.querySelector("header");
+// ==============================
+// HEADER SHADOW
+// ==============================
 
-  if(window.scrollY>50){
-    header.style.boxShadow="0 5px 20px rgba(0,0,0,.5)";
-  }else{
-    header.style.boxShadow="none";
+window.addEventListener("scroll", () => {
+
+  const header = document.querySelector("header");
+
+  if (window.scrollY > 50) {
+    header.style.boxShadow = "0 5px 20px rgba(0,0,0,.5)";
+  } else {
+    header.style.boxShadow = "none";
   }
+
 });
-// Mobile Menu
+
+
+// ==============================
+// MOBILE MENU
+// ==============================
 
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("nav");
 
-menuToggle.addEventListener("click",()=>{
+if (menuToggle && nav) {
 
-nav.classList.toggle("show-menu");
+  menuToggle.addEventListener("click", () => {
 
-});
-const modal=document.querySelector(".project-modal");
+    nav.classList.toggle("show-menu");
 
-document.querySelectorAll(".view-project").forEach(btn=>{
-
-btn.onclick=(e)=>{
-
-e.preventDefault();
-
-document.getElementById("modal-title").innerText=btn.dataset.title;
-
-document.getElementById("modal-description").innerText=btn.dataset.description;
-
-document.getElementById("modal-image").src=btn.dataset.image;
-
-modal.style.display="flex";
-
-};
-
-});
-
-document.querySelector(".close-modal").onclick=()=>{
-
-modal.style.display="none";
-
-};
-
-window.onclick=(e)=>{
-
-if(e.target==modal){
-
-modal.style.display="none";
+  });
 
 }
 
-};
-// Testimonial Slider
+
+// ==============================
+// PROJECT MODAL
+// ==============================
+
+const modal = document.querySelector(".project-modal");
+
+if (modal) {
+
+  document.querySelectorAll(".view-project").forEach((btn) => {
+
+    btn.addEventListener("click", function (e) {
+
+      e.preventDefault();
+
+      document.getElementById("modal-title").innerText = this.dataset.title;
+      document.getElementById("modal-description").innerText = this.dataset.description;
+      document.getElementById("modal-image").src = this.dataset.image;
+
+      modal.style.display = "flex";
+
+    });
+
+  });
+
+  const closeBtn = document.querySelector(".close-modal");
+
+  if (closeBtn) {
+
+    closeBtn.addEventListener("click", () => {
+
+      modal.style.display = "none";
+
+    });
+
+  }
+
+  window.addEventListener("click", (e) => {
+
+    if (e.target === modal) {
+
+      modal.style.display = "none";
+
+    }
+
+  });
+
+}
+
+
+// ==============================
+// TESTIMONIAL SLIDER
+// ==============================
 
 const testimonials = document.querySelectorAll(".testimonial");
 
-let current = 0;
+if (testimonials.length > 0) {
 
-setInterval(() => {
+  let current = 0;
 
-testimonials[current].classList.remove("active");
+  setInterval(() => {
 
-current = (current + 1) % testimonials.length;
+    testimonials[current].classList.remove("active");
 
-testimonials[current].classList.add("active");
+    current = (current + 1) % testimonials.length;
 
-}, 4000);
+    testimonials[current].classList.add("active");
 
+  }, 4000);
+
+}
+
+
+// ==============================
 // FAQ
+// ==============================
 
-document.querySelectorAll(".faq-question").forEach(question=>{
+document.querySelectorAll(".faq-question").forEach((question) => {
 
-question.onclick=()=>{
+  question.addEventListener("click", () => {
 
-const answer=question.nextElementSibling;
+    const answer = question.nextElementSibling;
 
-answer.style.display=
-answer.style.display==="block"?"none":"block";
+    if (answer.style.display === "block") {
 
-};
+      answer.style.display = "none";
+
+    } else {
+
+      answer.style.display = "block";
+
+    }
+
+  });
 
 });
-// ===========================
-/// EMAILJS CONTACT FORM (FIXED SAFE VERSION)
+
+
+// ==============================
+// EMAILJS
+// ==============================
 
 emailjs.init("sjuwfOnyjgPpyBULR");
 
@@ -112,9 +167,10 @@ const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 
 if (contactForm) {
+
   contactForm.addEventListener("submit", function (e) {
+
     e.preventDefault();
-    e.stopPropagation(); // 🔥 IMPORTANT FIX
 
     formStatus.innerHTML = "Sending...";
     formStatus.style.color = "#d4af37";
@@ -123,14 +179,18 @@ if (contactForm) {
       "service_28u5z9c",
       "template_yyexrrh",
       this
-    ).then(() => {
+    )
+
+    .then(() => {
 
       formStatus.innerHTML = "✅ Message sent successfully!";
       formStatus.style.color = "#4CAF50";
 
       contactForm.reset();
 
-    }).catch((error) => {
+    })
+
+    .catch((error) => {
 
       console.error(error);
 
@@ -140,12 +200,5 @@ if (contactForm) {
     });
 
   });
-}
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector("nav");
 
-if(menuToggle){
-menuToggle.addEventListener("click",()=>{
-nav.classList.toggle("show-menu");
-});
 }
