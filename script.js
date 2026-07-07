@@ -282,3 +282,80 @@ update();
 });
 
 counters.forEach(counter=>counterObserver.observe(counter));
+// ===============================
+// Active Navigation
+// ===============================
+
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+let current = "";
+
+document.querySelectorAll("section").forEach(section => {
+
+const sectionTop = section.offsetTop - 120;
+
+if(pageYOffset >= sectionTop){
+
+current = section.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link => {
+
+link.classList.remove("active");
+
+if(link.getAttribute("href") === "#" + current){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+// ===========================
+// Scroll To Top
+// ===========================
+
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+// Cursor Glow
+
+const glow=document.getElementById("cursor-glow");
+
+document.addEventListener("mousemove",(e)=>{
+
+glow.style.left=e.clientX+"px";
+
+glow.style.top=e.clientY+"px";
+
+});
