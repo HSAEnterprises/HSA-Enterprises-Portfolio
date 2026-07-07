@@ -1400,3 +1400,28 @@ text-align:center;
 }.trust-card p{
 color:#cfcfcf;
 }
+html,
+body{
+    width:100%;
+    min-width:100%;
+    overflow-x:hidden;
+}
+
+header,
+section,
+footer{
+    width:100%;
+}
+
+.hero,
+.stats,
+.why-us,
+#about,
+#services,
+#projects,
+#testimonials,
+#faq,
+#contact{
+    max-width:1400px;
+    margin:auto;
+}
