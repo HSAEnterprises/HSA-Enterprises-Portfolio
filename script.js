@@ -202,3 +202,83 @@ if (contactForm) {
   });
 
 }
+// Loader
+
+window.addEventListener("load",()=>{
+
+const loader=document.getElementById("loader");
+
+loader.style.opacity="0";
+
+setTimeout(()=>{
+
+loader.style.display="none";
+
+},600);
+
+});
+// Progress Bar
+
+window.addEventListener("scroll",()=>{
+
+const scrollTop=document.documentElement.scrollTop;
+
+const scrollHeight=
+document.documentElement.scrollHeight-
+document.documentElement.clientHeight;
+
+const progress=(scrollTop/scrollHeight)*100;
+
+document.getElementById("progress-bar").style.width=
+progress+"%";
+
+});
+// Counter Animation
+
+const counters=document.querySelectorAll(".stat-card h2");
+
+const counterObserver=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+const counter=entry.target;
+
+const target=counter.innerText;
+
+const num=parseInt(target);
+
+if(!isNaN(num)){
+
+let current=0;
+
+const update=()=>{
+
+current+=Math.ceil(num/40);
+
+if(current>=num){
+
+counter.innerText=target;
+
+}else{
+
+counter.innerText=current+"+";
+
+requestAnimationFrame(update);
+
+}
+
+};
+
+update();
+
+}
+
+}
+
+});
+
+});
+
+counters.forEach(counter=>counterObserver.observe(counter));
